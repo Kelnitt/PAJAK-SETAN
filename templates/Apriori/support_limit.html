@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+  <p class="lead text-center">Min. Support & Min. Confidence</p>
+
+  <form method="POST" action="/GetRules" onsubmit="ValidAprioriRules(event)">
+    <div class="mb-3">
+      <label for="support" class="form-label">Min. Support</label>
+      <input type="number" class="form-control" id="support" name="support" placeholder="0.01 to 0.1" step="0.01" required>
+      <small id="supportError" style="color:red;"></small>
+    </div>
+    <div class="mb-3">
+      <label for="confidence" class="form-label">Min. Confidence</label>
+      <input type="number" class="form-control" id="confidence" name="confidence" placeholder="0.1 to 1.0" step="0.01" required>
+      <small id="confidenceError" style="color:red;"></small>
+    </div>
+    <div class="btn-group" role="group" style="float: right;">
+      <input type="reset" value="Reset", class="btn btn-danger">
+      <input type="submit" value="Find Rules" class="btn btn-primary">
+    </div>
+  </form>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+  <p class="lead text-center">Tabel Transaksi</p>
+
+  <table border="1" class="table table-hover">
+    <thead>
+      <tr>
+        <th style="width: 190px;">Transaction ID</th>
+        <th>Items</th>
+        <!-- {% for col in table.columns %}
+        <th>{{ col }}</th>
+        {% endfor %} -->
+      </tr>
+    </thead>
+    <tbody>
+      {% for inde, row in table.iterrows() %}
+      <tr>
+        {% for col in row %}
+          <td>{{ col }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center">
+    <div class="btn-group" role="group">
+      <a href="/AprioriLimit" class="btn btn-primary" type="button">Apriori Rules</a>
+      <a href="/GetCluster" class="btn btn-info" type="button">Cluster</a>
+    </div>
+  </div>
+{% endblock %}

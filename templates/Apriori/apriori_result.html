@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+
+<p class="lead">Apriori Rules with Min. Support is {{ result.supp }} and Min. Confidence is {{ result.confi }}</p>
+
+<p class="lead">Itemsets 1</p>
+
+<table border="1" class="table table-hover">
+  <thead>
+    <tr>
+      {% for singcol in result.singular.columns %}
+      <th>{{ singcol.capitalize() }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for indesing, rosing in result.singular.iterrows() %}
+    <tr>
+      {% for coling in rosing %}
+        <td>{{ coling }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<p class="lead">Itemsets 2</p>
+
+<table border="1" class="table table-hover">
+  <thead>
+    <tr>
+      {% for singbel in result.double.columns %}
+      <th>{{ singbel.capitalize() }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for indebel, robel in result.double.iterrows() %}
+    <tr>
+      {% for cobel in robel %}
+        <td>{{ cobel }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<p class="lead">Association Rules</p>
+
+<table border="1" class="table table-hover">
+  <thead>
+    <tr>
+      {% for rucol in result.rules.columns %}
+      <th>{{ rucol.capitalize() }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for inderul, rorul in result.rules.iterrows() %}
+    <tr>
+      {% for corul in rorul %}
+        <td>{{ corul }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
